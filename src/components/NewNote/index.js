@@ -1,11 +1,12 @@
 import React from 'react';
 import Db from '../../storage';
-
+import { Redirect } from 'react-router-dom';
 class Note extends React.Component {
   constructor() {
     super();
     this.state = {
-      description: ''
+      description: '',
+      saved: false
     }
   }
   handleDescription = (event) => {
@@ -22,16 +23,22 @@ class Note extends React.Component {
       createdDate: new Date().getTime(),
       modifiedDate: new Date().getTime()
     })
+    this.setState({ saved: true })
   }
   render() {
-    return <div className='container'>
-      <div className="field">
-        <div className="control is-large">
-          <textarea className="textarea is-large" type="text" placeholder="Note it" onInput={this.handleDescription} value={this.state.description}></textarea>
+    if (this.state.saved) {
+      return <Redirect to='/' />
+    }
+    else {
+      return <div className='container'>
+        <div className="field">
+          <div className="control is-large">
+            <textarea className="textarea is-large" type="text" placeholder="Note it" onInput={this.handleDescription} value={this.state.description}></textarea>
+          </div>
         </div>
+        <a className="button is-large is-danger" onClick={this.insertDescription}>Note It</a>
       </div>
-      <a className="button is-large is-danger" onClick={this.insertDescription}>Note It</a>
-    </div>
+    }
   }
 }
 
