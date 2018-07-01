@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Db from '../../storage';
 import Layout from '../Layout';
 import './App.css';
 
@@ -8,6 +10,7 @@ class App extends Component {
     this.state = {
       navBarState: false
     };
+    Db.init();
   }
   showHideNavBar = () => {
     this.setState({
@@ -16,9 +19,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Layout showHideNavBar={this.showHideNavBar} isOpen={this.state.navBarState} />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Layout showHideNavBar={this.showHideNavBar} isOpen={this.state.navBarState} />
+        </div>
+      </BrowserRouter>
     );
   }
 }

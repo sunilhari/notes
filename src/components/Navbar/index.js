@@ -1,12 +1,12 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Navbar = ({ showHideNavBar, isOpen }) => (
   <nav className="navbar">
     <div className="container">
       <div className="navbar-brand">
-        <a className="navbar-item">
+        <Link className="navbar-item" to='/'>
           <p className='title is-2'>Notes</p>
-        </a>
+        </Link>
         <span className={isOpen ? 'navbar-burger burger is-active' : 'navbar-burger burger'} onClick={showHideNavBar} data-target="navbarMenuHeroB">
           <span></span>
           <span></span>
@@ -15,12 +15,10 @@ const Navbar = ({ showHideNavBar, isOpen }) => (
       </div>
       <div id="navbarMenuHeroB" className={isOpen ? 'navbar-menu is-active' : 'navbar-menu'}>
         <div className="navbar-end">
-          <a className="navbar-item is-active">Home</a>
-          <a className="navbar-item">Notes</a>
           <span className="navbar-item">
-            <a className="button is-info is-inverted">
+            <Link className="button is-info is-inverted" to='/note'>
               <span>Add Note</span>
-            </a>
+            </Link>
           </span>
         </div>
       </div>
@@ -29,3 +27,7 @@ const Navbar = ({ showHideNavBar, isOpen }) => (
 )
 
 export default Navbar;
+/*
+ <a className="navbar-item is-active">Home</a>
+  <a className="navbar-item">Notes</a>
+*/

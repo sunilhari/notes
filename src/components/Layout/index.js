@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import Content from '../Content';
+import Helmet from 'react-helmet';
+import { Switch, Route } from 'react-router-dom';
+import Welcome from '../Welcome';
 import Navbar from '../Navbar';
-const Layout = ({ children, showHideNavBar, isOpen }) => (
+import NewNote from '../NewNote';
+const Layout = ({ showHideNavBar, isOpen }) => (
   <div className='container-fluid'>
     <Helmet
       title="Notes"
@@ -17,7 +19,10 @@ const Layout = ({ children, showHideNavBar, isOpen }) => (
         <Navbar showHideNavBar={showHideNavBar} isOpen={isOpen} />
       </div>
       <div className="hero-body">
-        <Content />
+        <Switch>
+          <Route exact path='/note' component={NewNote} />
+          <Route path='/' component={Welcome} />
+        </Switch>
       </div>
     </div>
   </div>
