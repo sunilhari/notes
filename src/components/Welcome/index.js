@@ -1,14 +1,17 @@
 import React from 'react';
 import Db from '../../storage';
 import Notes from '../Notes';
+import { Link } from 'react-router-dom';
 const StaticContent = () => (
   <div className="container has-text-centered">
     <p className="title">
-      Notes it is ...
+      Notes
   </p>
     <p className="subtitle">
-      Subtitle
-  </p>
+      <Link className="button is-info is-inverted" to='/note'>
+        <span>Add Note</span>
+      </Link>
+    </p>
   </div>
 )
 class Welcome extends React.Component {
