@@ -1,7 +1,7 @@
 # Notes
 ## [https://notes12.netlify.com/]()
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/sunilhari/notes.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/sunilhari/notes.svg?branch=master)](https://travis-ci.org/sunilhari/notes) [![Greenkeeper badge](https://badges.greenkeeper.io/sunilhari/notes.svg)](https://greenkeeper.io/)
 
 A simple notes application which is built out of
 
