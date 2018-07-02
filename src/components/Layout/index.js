@@ -20,7 +20,7 @@ const Layout = ({ showHideNavBar, isOpen }) => (
       </div>
       <div className="hero-body">
         <Switch>
-          <Route exact path='/note' component={NewNote} />
+          <Route path='/note/:id' component={NewNote} />
           <Route path='/' component={Welcome} />
         </Switch>
       </div>

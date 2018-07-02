@@ -13,15 +13,11 @@ class Db {
   static init = () => {
     dbPromise = idb.open(DB_NAME, 1, upgradeDb => {
       if (!upgradeDb.objectStoreNames.contains(NOTES_STORE)) {
-        const notesStore = upgradeDb.createObjectStore(NOTES_STORE, {
+        upgradeDb.createObjectStore(NOTES_STORE, {
           keyPath: 'id',
-          autoIncrement: true
+          autoIncrement: true,
+          unique:true
         });
-        notesStore.createIndex('tags', 'tags', {});
-        notesStore.createIndex('createdDate', 'createdDate', {});
-        notesStore.createIndex('description', 'description', {});
-        notesStore.createIndex('modifiedDate', 'modifiedDate', {});
-
       }
     });
   }
@@ -48,13 +44,13 @@ class Db {
   )
   static fetchById = (id) => (
     dbPromise.then(db => {
-      return db.transaction(NOTES_STORE)
-        .objectStore(NOTES_STORE).get(id);
+      const tx = db.transaction(NOTES_STORE, 'readonly');
+      return tx.objectStore(NOTES_STORE).get(id);
     })
   )
   static getAllNotes = () => (
     dbPromise.then(db => {
-      const tx = db.transaction(NOTES_STORE);
+      const tx = db.transaction(NOTES_STORE,'readonly');
       return tx.objectStore(NOTES_STORE).getAll();
     })
   )

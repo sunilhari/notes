@@ -1,13 +1,14 @@
 import React from 'react';
 import Note from '../Note';
 const Notes = ({ notes = [] }) => (
-  <div className='columns is-multiline is-mobile'>{
-    notes.map((note,index) => (
-      <div className='column' key={note.id} >
-        <Note {...note} index={index}/>
-      </div>
-    ))
-  }
+  <div className="tile is-ancestor">
+    <div className="tile is-4 is-parent">{
+      notes.map((note, index) => (
+        <Note {...note} index={index} key={note.id} />
+      ))
+    }
+    </div>
   </div>
 )
 export default Notes;
+

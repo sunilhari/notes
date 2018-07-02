@@ -16,7 +16,7 @@ const Navbar = ({ showHideNavBar, isOpen }) => (
       <div id="navbarMenuHeroB" className={isOpen ? 'navbar-menu is-active' : 'navbar-menu'}>
         <div className="navbar-end">
           <span className="navbar-item">
-            <Link className="button is-info is-inverted" to='/note'>
+            <Link className="button is-info is-inverted" to='/note/-1'>
               <span>Add Note</span>
             </Link>
           </span>

@@ -8,7 +8,7 @@ const StaticContent = () => (
       Notes
   </p>
     <p className="subtitle">
-      <Link className="button is-info is-inverted" to='/note'>
+      <Link className="button is-info is-inverted" to='/note/-1'>
         <span>Add Note</span>
       </Link>
     </p>
