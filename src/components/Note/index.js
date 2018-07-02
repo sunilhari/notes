@@ -13,22 +13,24 @@ const classes = ['is-primary', 'is-warning', 'is-info', 'is-danger', 'is-success
 const Note = ({ id, index, createdDate, description }) => {
   let className = classes[(index % classes.length)];
   return (
-    <div className='tile'>
-      <article className={`${className} tile is-child notification`}>
-        <p className="title">Note</p>
-        <p className="subtitle">{formatDate(createdDate)}</p>
-        <div className="content">
-          {description}
-        </div>
-        <footer>
-          <Link className="button is-medium" to={`/note/${id}`}>
-            <span className="icon is-medium">
-              <FontAwesomeIcon icon={faEdit} />
-            </span>
-            <span>Edit</span>
-          </Link>
-        </footer>
-      </article>
+    <div className="column is-12-mobile is-6-tablet is-4-desktop is-3-widescreen is-4-fullhd">
+      <div className='tile'>
+        <article className={`${className} tile is-child notification`}>
+          <p className="title">Note</p>
+          <p className="subtitle">{formatDate(createdDate)}</p>
+          <div className="content">
+            {description}
+          </div>
+          <footer>
+            <Link className="button is-medium" to={`/note/${id}`}>
+              <span className="icon is-medium">
+                <FontAwesomeIcon icon={faEdit} />
+              </span>
+              <span>Edit</span>
+            </Link>
+          </footer>
+        </article>
+      </div>
     </div>
   )
 }
