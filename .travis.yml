@@ -7,9 +7,6 @@ cache:
 script:
   - npm install
   - npm run build
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: build
-  on:
-    branch: master
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
