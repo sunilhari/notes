@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar class is toggled when the button is clicked 1`] = `
+<nav
+  className="navbar"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="navbar-brand"
+    >
+      <a
+        className="navbar-item"
+        href="/"
+        onClick={[Function]}
+      >
+        <p
+          className="title is-2"
+        >
+          Notes
+        </p>
+      </a>
+      <span
+        className="navbar-burger burger"
+        data-target="navbarMenuHeroB"
+        onClick={[Function]}
+      >
+        <span />
+        <span />
+        <span />
+      </span>
+    </div>
+    <div
+      className="navbar-menu"
+      id="navbarMenuHeroB"
+    >
+      <div
+        className="navbar-end"
+      >
+        <span
+          className="navbar-item"
+        >
+          <a
+            className="button is-info is-inverted"
+            href="/note/-1"
+            onClick={[Function]}
+          >
+            <span>
+              Add Note
+            </span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
+
+exports[`Navbar class is toggled when the button is clicked 2`] = `
+<nav
+  className="navbar"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="navbar-brand"
+    >
+      <a
+        className="navbar-item"
+        href="/"
+        onClick={[Function]}
+      >
+        <p
+          className="title is-2"
+        >
+          Notes
+        </p>
+      </a>
+      <span
+        className="navbar-burger burger"
+        data-target="navbarMenuHeroB"
+        onClick={[Function]}
+      >
+        <span />
+        <span />
+        <span />
+      </span>
+    </div>
+    <div
+      className="navbar-menu"
+      id="navbarMenuHeroB"
+    >
+      <div
+        className="navbar-end"
+      >
+        <span
+          className="navbar-item"
+        >
+          <a
+            className="button is-info is-inverted"
+            href="/note/-1"
+            onClick={[Function]}
+          >
+            <span>
+              Add Note
+            </span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
+
+exports[`Navbar class is toggled when the button is clicked 3`] = `
+<nav
+  className="navbar"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="navbar-brand"
+    >
+      <a
+        className="navbar-item"
+        href="/"
+        onClick={[Function]}
+      >
+        <p
+          className="title is-2"
+        >
+          Notes
+        </p>
+      </a>
+      <span
+        className="navbar-burger burger"
+        data-target="navbarMenuHeroB"
+        onClick={[Function]}
+      >
+        <span />
+        <span />
+        <span />
+      </span>
+    </div>
+    <div
+      className="navbar-menu"
+      id="navbarMenuHeroB"
+    >
+      <div
+        className="navbar-end"
+      >
+        <span
+          className="navbar-item"
+        >
+          <a
+            className="button is-info is-inverted"
+            href="/note/-1"
+            onClick={[Function]}
+          >
+            <span>
+              Add Note
+            </span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+`;

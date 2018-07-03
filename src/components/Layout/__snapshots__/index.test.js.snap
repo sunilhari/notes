@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout is rendered  correctly 1`] = `
+<div
+  className="container-fluid"
+>
+  <div
+    className="hero is-info is-fullheight"
+  >
+    <div
+      className="hero-head"
+    >
+      <nav
+        className="navbar"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="navbar-brand"
+          >
+            <a
+              className="navbar-item"
+              href="/"
+              onClick={[Function]}
+            >
+              <p
+                className="title is-2"
+              >
+                Notes
+              </p>
+            </a>
+            <span
+              className="navbar-burger burger"
+              data-target="navbarMenuHeroB"
+              onClick={undefined}
+            >
+              <span />
+              <span />
+              <span />
+            </span>
+          </div>
+          <div
+            className="navbar-menu"
+            id="navbarMenuHeroB"
+          >
+            <div
+              className="navbar-end"
+            >
+              <span
+                className="navbar-item"
+              >
+                <a
+                  className="button is-info is-inverted"
+                  href="/note/-1"
+                  onClick={[Function]}
+                >
+                  <span>
+                    Add Note
+                  </span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div
+      className="hero-body"
+    >
+      <div
+        className="container has-text-centered"
+      >
+        <p
+          className="title"
+        >
+          Notes
+        </p>
+        <p
+          className="subtitle"
+        >
+          <a
+            className="button is-info is-inverted"
+            href="/note/-1"
+            onClick={[Function]}
+          >
+            <span>
+              Add Note
+            </span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
