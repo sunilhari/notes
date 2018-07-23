@@ -1,5 +1,4 @@
-# Notes
-## [https://notes12.netlify.com/]()
+# [Notes](https://notes12.netlify.com)
 
 [![Build Status](https://travis-ci.org/sunilhari/notes.svg?branch=master)](https://travis-ci.org/sunilhari/notes) [![Greenkeeper badge](https://badges.greenkeeper.io/sunilhari/notes.svg)](https://greenkeeper.io/)
 
