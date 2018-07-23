@@ -10,4 +10,6 @@ A simple notes application which is built out of
 
 It stores the notes in indexDB in browser.So if the browser storage is cleared,it gets cleared.
 
+[Demo](https://notes12.netlify.com)
+
 
