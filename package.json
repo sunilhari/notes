@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.5",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/free-solid-svg-icons": "^5.4.0",
     "@fortawesome/react-fontawesome": "0.1.0",
     "bulma": "^0.7.1",
     "bulma-extensions": "^2.2.1",
