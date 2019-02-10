@@ -9,7 +9,7 @@
     "bulma": "^0.7.1",
     "bulma-extensions": "^2.2.1",
     "idb": "^3.0.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
