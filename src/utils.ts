@@ -28,7 +28,7 @@ export function sortAllByDate(posts: AnyPost[]) {
 
 /** Prepend the Astro base path to an internal URL — required when base is set in astro.config */
 export function url(path: string): string {
-  const base = import.meta.env.BASE_URL // e.g. '/personal_blog/' or '/'
+  const base = import.meta.env.BASE_URL.replace(/\/?$/, '/') // ensure trailing slash
   return base + path.replace(/^\//, '')
 }
 
