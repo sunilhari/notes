@@ -1,5 +1,6 @@
 ---
 import { SITE, NAV } from '@config'
+import { url } from '@utils'
 import '@styles/global.css'
 
 interface Props {
@@ -19,8 +20,8 @@ const {
 } = Astro.props
 
 const pageTitle = title ? `${title} — ${SITE.title}` : SITE.title
-const canonicalURL = new URL(canonicalPath, SITE.url)
-const ogImageURL = ogImage ?? new URL('/og.png', SITE.url).href
+const canonicalURL = new URL(url(canonicalPath), SITE.url)
+const ogImageURL = ogImage ?? new URL(url('/og.png'), SITE.url).href
 
 const currentPath = Astro.url.pathname
 ---
@@ -51,10 +52,10 @@ const currentPath = Astro.url.pathname
     <meta name="twitter:image" content={ogImageURL} />
 
     <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href={url('/rss.xml')} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -80,13 +81,18 @@ const currentPath = Astro.url.pathname
       <!-- Header -->
       <header class="site-header">
         <div class="header-inner">
-          <a href="/" class="site-title">{SITE.title}</a>
+          <a href={url('/')} class="site-title">{SITE.title}</a>
           <div class="header-right">
             <nav class="site-nav" aria-label="Primary">
               {NAV.map(link => (
                 <a
-                  href={link.href}
-                  aria-current={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'page' : undefined}
+                  href={url(link.href)}
+                  aria-current={
+                    currentPath === url(link.href) ||
+                    (link.href !== '/' && currentPath.startsWith(url(link.href)))
+                      ? 'page'
+                      : undefined
+                  }
                 >
                   {link.title}
                 </a>
@@ -120,7 +126,7 @@ const currentPath = Astro.url.pathname
       <!-- Footer -->
       <footer class="site-footer">
         <span>© {new Date().getFullYear()} {SITE.author}</span>
-        <a href="/rss.xml">RSS Feed</a>
+        <a href={url('/rss.xml')}>RSS Feed</a>
       </footer>
 
     </div>

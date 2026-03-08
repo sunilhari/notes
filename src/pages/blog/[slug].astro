@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { getCollection, render } from 'astro:content'
-import { formatDate, slugifyTag, postSlug, type AnyPost } from '@utils'
+import { formatDate, slugifyTag, postSlug, url, type AnyPost } from '@utils'
 import { SITE } from '@config'
 
 export async function getStaticPaths() {
@@ -48,7 +48,7 @@ const { title, description, date, lastUpdated, tags, draft } = post.data
       {tags.length > 0 && (
         <div class="tags">
           {tags.map(tag => (
-            <a href={`/tags/${slugifyTag(tag)}/`} class="tag">{tag}</a>
+            <a href={url(`/tags/${slugifyTag(tag)}/`)} class="tag">{tag}</a>
           ))}
         </div>
       )}
@@ -67,6 +67,6 @@ const { title, description, date, lastUpdated, tags, draft } = post.data
 
   <!-- Back link -->
   <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-    <a href="/blog/" style="font-size: 0.9375rem; color: var(--color-muted);">← Back to all notes</a>
+    <a href={url('/blog/')} style="font-size: 0.9375rem; color: var(--color-muted);">← Back to all notes</a>
   </div>
 </BaseLayout>

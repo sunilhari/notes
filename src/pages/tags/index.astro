@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
-import { getAllTags } from '@utils'
+import { getAllTags, url } from '@utils'
 
-const allPosts = await getCollection('blog')
-const tags = getAllTags(allPosts)
+const blogPosts = await getCollection('blog')
+const draftPosts = import.meta.env.DEV ? await getCollection('drafts') : []
+const tags = getAllTags([...blogPosts.filter(p => import.meta.env.DEV || !p.data.draft), ...draftPosts])
 ---
 
 <BaseLayout title="Tags" description="Browse all topics." canonicalPath="/tags/">
@@ -19,7 +20,7 @@ const tags = getAllTags(allPosts)
     <div>
       {tags.map(t => (
         <div class="tag-item">
-          <a href={`/tags/${t.slug}/`}>{t.name}</a>
+          <a href={url(`/tags/${t.slug}/`)}>{t.name}</a>
           <span class="tag-count">{t.count} {t.count === 1 ? 'post' : 'posts'}</span>
         </div>
       ))}

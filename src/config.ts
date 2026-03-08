@@ -4,7 +4,7 @@ export const SITE = {
   /** Shown in the <meta description> and RSS feed */
   description: "A personal space to document what I study and learn.",
   /** Used for sitemap, canonical URLs, and OG tags. No trailing slash. */
-  url: "https://sunilhari.com",
+  url: "https://sunilhari.github.io",
   /** Your name — used in SEO meta tags and RSS */
   author: "Sunil Hari",
   /** Language tag for <html lang="..."> */

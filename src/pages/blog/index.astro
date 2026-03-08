@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro'
 import PostCard from '@components/PostCard.astro'
 import { getCollection } from 'astro:content'
-import { sortByDate, sortAllByDate, getAllTags, slugifyTag, postSlug } from '@utils'
+import { sortByDate, sortAllByDate, getAllTags, slugifyTag, postSlug, url } from '@utils'
 
 const blogPosts = await getCollection('blog')
 const draftPosts = import.meta.env.DEV ? await getCollection('drafts') : []
@@ -21,7 +21,7 @@ const tags = getAllTags([...blogPosts.filter(p => import.meta.env.DEV || !p.data
       <div class="section-heading">Browse by Topic</div>
       <div class="tags">
         {tags.map(t => (
-          <a href={`/tags/${t.slug}/`} class="tag">
+          <a href={url(`/tags/${t.slug}/`)} class="tag">
             {t.name} <span style="opacity:0.6; font-weight:400;">({t.count})</span>
           </a>
         ))}

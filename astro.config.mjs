@@ -3,7 +3,8 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://sunilhari.com", // TODO: replace with your actual URL
+  site: "https://sunilhari.github.io",
+  base: "/notes",
   image: {
     // No native image optimization — swap for 'astro/assets/services/sharp'
     // if you install the 'sharp' package and want optimized images

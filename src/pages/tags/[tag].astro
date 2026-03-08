@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro'
 import PostCard from '@components/PostCard.astro'
 import { getCollection } from 'astro:content'
-import { sortAllByDate, slugifyTag, postSlug, type AnyPost } from '@utils'
+import { sortAllByDate, slugifyTag, postSlug, url, type AnyPost } from '@utils'
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog')
@@ -33,7 +33,7 @@ const { tagName, posts } = Astro.props
   canonicalPath={`/tags/${Astro.params.tag}/`}
 >
   <div style="margin-bottom: 0.5rem;">
-    <a href="/tags/" style="font-size: 0.875rem; color: var(--color-muted);">← All tags</a>
+    <a href={url('/tags/')} style="font-size: 0.875rem; color: var(--color-muted);">← All tags</a>
   </div>
 
   <h1 class="page-title" style="margin-top: 1rem;">{tagName}</h1>

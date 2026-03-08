@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro'
 import PostCard from '@components/PostCard.astro'
 import { getCollection } from 'astro:content'
-import { sortByDate, sortAllByDate, postSlug } from '@utils'
+import { sortByDate, sortAllByDate, postSlug, url } from '@utils'
 import { SITE } from '@config'
 
 const blogPosts = await getCollection('blog')
@@ -22,7 +22,7 @@ const recentPosts = sortAllByDate([...sortByDate(blogPosts), ...draftPosts]).sli
   <section>
     <div class="section-heading" style="overflow: hidden;">
       Recent Notes
-      <a href="/blog/" class="see-all">All notes →</a>
+      <a href={url('/blog/')} class="see-all">All notes →</a>
     </div>
     <ul class="post-list">
       {recentPosts.map(post => (

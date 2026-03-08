@@ -26,6 +26,12 @@ export function sortAllByDate(posts: AnyPost[]) {
   return [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 }
 
+/** Prepend the Astro base path to an internal URL — required when base is set in astro.config */
+export function url(path: string): string {
+  const base = import.meta.env.BASE_URL // e.g. '/personal_blog/' or '/'
+  return base + path.replace(/^\//, '')
+}
+
 /** Strip .md / .mdx extension and trailing /index from a content entry id */
 export function postSlug(id: string): string {
   return id.replace(/\.(mdx?)$/, '').replace(/\/index$/, '')
