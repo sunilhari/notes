@@ -1,0 +1,72 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { getCollection, render } from 'astro:content'
+import { formatDate, slugifyTag, postSlug, type AnyPost } from '@utils'
+import { SITE } from '@config'
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog')
+  const draftPosts = import.meta.env.DEV ? await getCollection('drafts') : []
+  return [
+    ...blogPosts
+      .filter(p => import.meta.env.DEV || !p.data.draft)
+      .map(post => ({ params: { slug: postSlug(post.id) }, props: { post: post as AnyPost } })),
+    ...draftPosts
+      .map(post => ({ params: { slug: postSlug(post.id) }, props: { post: post as AnyPost } })),
+  ]
+}
+
+const { post } = Astro.props as { post: AnyPost }
+const { Content, remarkPluginFrontmatter } = await render(post as any)
+const { title, description, date, lastUpdated, tags, draft } = post.data
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={`/blog/${postSlug(post.id)}/`}
+>
+  <Fragment slot="head">
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={date.toISOString()} />
+    {lastUpdated && <meta property="article:modified_time" content={lastUpdated.toISOString()} />}
+    <meta property="article:author" content={SITE.author} />
+    {tags.map(tag => <meta property="article:tag" content={tag} />)}
+  </Fragment>
+
+  <!-- Post header -->
+  <header style="margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--color-border);">
+    {draft && <span class="draft-badge">Draft</span>}
+    <h1 style="font-size: 1.875rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: var(--color-heading);">
+      {title}
+    </h1>
+    <div class="post-meta" style="margin-top: 1rem;">
+      <time datetime={date.toISOString()}>{formatDate(date)}</time>
+      {lastUpdated && (
+        <span>Updated {formatDate(lastUpdated)}</span>
+      )}
+      {tags.length > 0 && (
+        <div class="tags">
+          {tags.map(tag => (
+            <a href={`/tags/${slugifyTag(tag)}/`} class="tag">{tag}</a>
+          ))}
+        </div>
+      )}
+    </div>
+    {description && (
+      <p style="margin-top: 1rem; font-size: 1rem; color: var(--color-muted); line-height: 1.65;">
+        {description}
+      </p>
+    )}
+  </header>
+
+  <!-- Post body -->
+  <article class="prose">
+    <Content />
+  </article>
+
+  <!-- Back link -->
+  <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+    <a href="/blog/" style="font-size: 0.9375rem; color: var(--color-muted);">← Back to all notes</a>
+  </div>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+import { getAllTags } from '@utils'
+
+const allPosts = await getCollection('blog')
+const tags = getAllTags(allPosts)
+---
+
+<BaseLayout title="Tags" description="Browse all topics." canonicalPath="/tags/">
+  <h1 class="page-title">Tags</h1>
+  <p class="page-subtitle" style="margin-bottom: 2rem;">
+    Browse notes by topic.
+  </p>
+
+  {tags.length === 0 ? (
+    <p style="color: var(--color-muted);">No tags yet.</p>
+  ) : (
+    <div>
+      {tags.map(t => (
+        <div class="tag-item">
+          <a href={`/tags/${t.slug}/`}>{t.name}</a>
+          <span class="tag-count">{t.count} {t.count === 1 ? 'post' : 'posts'}</span>
+        </div>
+      ))}
+    </div>
+  )}
+</BaseLayout>

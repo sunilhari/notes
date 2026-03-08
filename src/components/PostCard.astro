@@ -1,0 +1,32 @@
+---
+import { formatDate, slugifyTag } from '@utils'
+
+interface Props {
+  title: string
+  description: string
+  date: Date
+  slug: string
+  tags: string[]
+  draft?: boolean
+}
+
+const { title, description, date, slug, tags, draft } = Astro.props
+---
+
+<li class="post-card">
+  <h2>
+    {draft && <span class="draft-badge">Draft</span>}
+    <a href={`/blog/${slug}/`}>{title}</a>
+  </h2>
+  <div class="post-meta">
+    <time datetime={date.toISOString()}>{formatDate(date)}</time>
+    {tags.length > 0 && (
+      <div class="tags">
+        {tags.map(tag => (
+          <a href={`/tags/${slugifyTag(tag)}/`} class="tag">{tag}</a>
+        ))}
+      </div>
+    )}
+  </div>
+  {description && <p class="description">{description}</p>}
+</li>

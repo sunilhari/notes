@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import PostCard from '@components/PostCard.astro'
+import { getCollection } from 'astro:content'
+import { sortByDate, sortAllByDate, postSlug } from '@utils'
+import { SITE } from '@config'
+
+const blogPosts = await getCollection('blog')
+const draftPosts = import.meta.env.DEV ? await getCollection('drafts') : []
+const recentPosts = sortAllByDate([...sortByDate(blogPosts), ...draftPosts]).slice(0, 5)
+---
+
+<BaseLayout>
+  <section class="hero">
+    <h1>Hello, I'm {SITE.author}</h1>
+    <p>
+      This is my personal notebook — a place where I document what I study and
+      learn. Notes on programming, computer science, and whatever I'm exploring.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-heading" style="overflow: hidden;">
+      Recent Notes
+      <a href="/blog/" class="see-all">All notes →</a>
+    </div>
+    <ul class="post-list">
+      {recentPosts.map(post => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          slug={postSlug(post.id)}
+          tags={post.data.tags}
+          draft={post.data.draft}
+        />
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
